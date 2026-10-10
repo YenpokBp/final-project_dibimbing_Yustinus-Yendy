@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 10, 2026 at 03:53 AM
+-- Generation Time: Oct 10, 2026 at 05:34 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -57,6 +57,15 @@ CREATE TABLE `categories` (
   `category_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`category_id`, `category_name`) VALUES
+(1, 'Action & Adventure'),
+(2, 'RPG'),
+(3, 'Sports');
+
 -- --------------------------------------------------------
 
 --
@@ -99,6 +108,15 @@ CREATE TABLE `platforms` (
   `platform_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+--
+-- Dumping data for table `platforms`
+--
+
+INSERT INTO `platforms` (`platform_id`, `platform_name`) VALUES
+(2, 'Nintendo Switch'),
+(1, 'PlayStation 5'),
+(3, 'Xbox Series X');
+
 -- --------------------------------------------------------
 
 --
@@ -107,6 +125,7 @@ CREATE TABLE `platforms` (
 
 CREATE TABLE `products` (
   `product_id` int NOT NULL,
+  `product_name` varchar(150) NOT NULL,
   `category_id` int NOT NULL,
   `platform_id` int NOT NULL,
   `price` decimal(12,2) NOT NULL,
@@ -114,6 +133,17 @@ CREATE TABLE `products` (
   `image_url` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `product_name`, `category_id`, `platform_id`, `price`, `stock`, `image_url`, `created_at`) VALUES
+(1, 'God of War Ragnarok', 1, 1, '850000.00', 15, 'god_of_war_ragnarok_ps5.jpg', '2026-10-10 04:23:27'),
+(2, 'EA Sports FC 26', 3, 1, '749000.00', 20, 'fc_26_ps5.jpg', '2026-10-10 04:23:27'),
+(3, 'The Legend of Zelda: Tears of the Kingdom', 1, 2, '799000.00', 10, 'zelda_totk_switch.jpg', '2026-10-10 04:23:27'),
+(4, 'Cyberpunk 2077: Ultimate Edition', 2, 3, '699000.00', 8, 'cyberpunk_xbox.jpg', '2026-10-10 04:23:27'),
+(5, 'EA Sports FC 26', 3, 2, '729000.00', 12, 'fc_26_switch.jpg', '2026-10-10 04:23:27');
 
 -- --------------------------------------------------------
 
@@ -213,7 +243,7 @@ ALTER TABLE `cart_items`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -231,13 +261,13 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `platforms`
 --
 ALTER TABLE `platforms`
-  MODIFY `platform_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `platform_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
