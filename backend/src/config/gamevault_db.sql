@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 10, 2026 at 05:34 AM
+-- Generation Time: Oct 10, 2026 at 08:34 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -161,6 +161,22 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `name`, `email`, `password_hash`, `role`, `created_at`) VALUES
+(1, 'yendy', 'yendy292432@gmail.com', '$2b$10$Hw63ChT/pvrKb2dsGMJMmOcjVhQl/9Mv5U45qwxwmfP7.VCootfG2', 'customer', '2026-10-10 08:16:50'),
+(2, 'bambang', 'bambang202842@gmail.com', '$2b$10$EobgLAhD2Vv/vzggFCnqseV3X6LIRdztW7ZDVL0aS1LszuvR84Go2', 'customer', '2026-10-10 08:19:51'),
+(3, 'bambang', 'bambang964517@gmail.com', '$2b$10$eQndhAJOUM1frOaMAzzbt.aSeOsDe77E8E8oWp7N1X5Preawv87ia', 'customer', '2026-10-10 08:22:19'),
+(4, 'bambang', 'bambang584212@gmail.com', '$2b$10$UoyJdMmRXzDO5Kj41Yc8IOtbS0K7SF14ZLNQC4rxUPfRluQ5yrNJ6', 'customer', '2026-10-10 08:23:18'),
+(5, 'bambang', 'bambang527327@gmail.com', '$2b$10$3PotW.A88fsQlwtRTUMhyuT5kmUQcOiO3v0VYV4bHhBhjh.qlKcPu', 'customer', '2026-10-10 08:23:51'),
+(6, 'bambang', 'bambang705639@gmail.com', '$2b$10$lX7DeC9sCxqAVKrSQbMqy.Z5zNrbPMajrQbvaSN4vF8xHgeeYXDY2', 'customer', '2026-10-10 08:26:34'),
+(7, 'bambang', 'bambang549885@gmail.com', '$2b$10$3JsKe7.rRH5C5OtXyriSvurVgGD01RUR3JdZJoUKvaFHpNQRLSxJ6', 'customer', '2026-10-10 08:29:13'),
+(8, 'bambang', 'bambang142824@gmail.com', '$2b$10$46DfjwVm7mg7Nfsb5JDjeurFx0tBJUunXgn0aC.Kk4u/tdZoQxQ1m', 'customer', '2026-10-10 08:31:42'),
+(9, 'bambang', 'bambang887421@gmail.com', '$2b$10$oDuNP.iuR95kjl9vpQPrw.qiU.cc4k7JKkmCvoxd7ESf9sSpUMMhe', 'customer', '2026-10-10 08:32:06'),
+(10, 'bambang', 'bambang527895@gmail.com', '$2b$10$rUviON3DeFJ5HEHn90AMz.3CdjOzRMniK/AArugOts6dljMZQFaKe', 'customer', '2026-10-10 08:32:16');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -273,7 +289,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
