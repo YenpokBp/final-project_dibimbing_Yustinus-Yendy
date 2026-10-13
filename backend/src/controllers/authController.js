@@ -52,7 +52,3 @@ export const login = async (req, res) => {
     data: { token: signToken(user), user: publicUser(user) },
   });
 };
-
-export const me = async (req, res) => {
-  res.json({ success: true, data: publicUser(req.user) });
-};
