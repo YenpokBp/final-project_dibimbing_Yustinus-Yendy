@@ -1,15 +1,15 @@
 import { Platform } from "../models/index.js";
 import { HttpError } from "../utils/httpError.js";
 
-export const getPlatform = async (req, res) => {
-  const platform = await Platform.findAll({
+export const getPlatforms = async (req, res) => {
+  const platforms = await Platform.findAll({
     order: [["platform_name", "ASC"]],
   });
 
   res.json({
     success: true,
-    message: "Daftar kategori berhasil diambil.",
-    data: platform,
+    message: "Daftar platform berhasil diambil.",
+    data: platforms,
   });
 };
 
@@ -20,29 +20,29 @@ export const createPlatform = async (req, res) => {
 
   res.status(201).json({
     success: true,
-    message: "Kategori berhasil dibuat.",
+    message: "Platform berhasil dibuat.",
     data: platform,
   });
 };
 
 export const updatePlatform = async (req, res) => {
   const platform = await Platform.findByPk(req.params.id);
-  if (!platform) throw new HttpError(404, "Kategori tidak ditemukan.");
+  if (!platform) throw new HttpError(404, "Platform tidak ditemukan.");
 
   await platform.update({ platform_name: req.body.platform_name });
 
   res.json({
     success: true,
-    message: "Kategori berhasil diubah.",
+    message: "Platform berhasil diubah.",
     data: platform,
   });
 };
 
 export const deletePlatform = async (req, res) => {
   const platform = await Platform.findByPk(req.params.id);
-  if (!platform) throw new HttpError(404, "Kategori tidak ditemukan.");
+  if (!platform) throw new HttpError(404, "Platform tidak ditemukan.");
 
   await platform.destroy();
 
-  res.json({ success: true, message: "Kategori berhasil dihapus." });
+  res.json({ success: true, message: "Platform berhasil dihapus." });
 };

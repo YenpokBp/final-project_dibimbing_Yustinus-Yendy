@@ -1,7 +1,7 @@
 import express from "express";
 import { body, param } from "express-validator";
 import {
-  getPlatform,
+  getPlatforms,
   createPlatform,
   updatePlatform,
   deletePlatform,
@@ -24,7 +24,7 @@ const platformBody = [
     .withMessage("Nama platform maksimal 100 karakter."),
 ];
 
-router.get("/", getPlatform);
+router.get("/", getPlatforms);
 
 router.post(
   "/",
