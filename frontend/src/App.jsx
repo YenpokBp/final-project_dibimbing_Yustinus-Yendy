@@ -1,20 +1,26 @@
-import { useEffect, useState } from "react";
-import api from "./services/api";
-
-function App() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    api.get("/products").then((res) => setProducts(res.data.data));
-  }, []);
-
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/navbar.jsx";
+import ProtectedRoute from "./components/protectedRoutes.jsx";
+import Products from "./pages/products.jsx";
+import Login from "./pages/login.jsx";
+import Register from "./pages/register.jsx";
+import AdminDashboard from "./pages/admin/adminDashboard.jsx";
+import Home from "./pages/home";
+export default function App() {
   return (
-    <ul>
-      {products.map((p) => (
-        <li key={p.product_id}>{p.product_name}</li>
-      ))}
-    </ul>
+    <div className="min-h-screen bg-gray-50">
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Products />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        {/* Khusus admin */}
+        <Route element={<ProtectedRoute roles={["admin"]} />}>
+          <Route path="/admin" element={<AdminDashboard />} />
+        </Route>
+      </Routes>
+    </div>
   );
 }
-
-export default App;
