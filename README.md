@@ -246,7 +246,7 @@ Base URL lokal: `http://localhost:3000/api`
 | `POST` | `/auth/login` | Login dan mendapatkan token |
 | `GET` | `/platforms` | Melihat daftar platform |
 | `GET` | `/categories` | Melihat daftar kategori |
-| `GET` | `/products` | Daftar produk; mendukung parameter `page`, `limit`, `category_id`, dan `platform_id` |
+| `GET` | `/products` | Daftar produk; mendukung parameter `search`, `page`, `limit`, `category_id`, dan `platform_id` |
 | `GET` | `/products/:id` | Detail produk |
 | `POST` | `/products` | Admin: tambah produk |
 | `PUT` | `/products/:id` | Admin: ubah produk |

@@ -8,14 +8,13 @@ import AdminDashboard from "./pages/admin/adminDashboard.jsx";
 import Home from "./pages/home";
 export default function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-void text-ink font-display">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Products />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         {/* Khusus admin */}
         <Route element={<ProtectedRoute roles={["admin"]} />}>
           <Route path="/admin" element={<AdminDashboard />} />

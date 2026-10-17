@@ -106,115 +106,135 @@ export default function Products() {
   };
 
   const selectClass =
-    "rounded-md border border-gray-300 bg-white px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none";
+    "clip-chamfer-sm border border-line bg-panel px-3 py-2 font-mono text-sm text-ink focus:border-violet-main focus:outline-none";
 
   const canBuy = user?.role !== "admin";
 
   return (
-    <div className="mx-auto max-w-6xl p-4">
-      <h1 className="mb-4 text-2xl font-bold text-gray-900">Katalog Game</h1>
-
-      <div className="mb-4 flex flex-wrap gap-3">
-        <input
-          type="text"
-          value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
-          placeholder="Cari nama game..."
-          className="min-w-52 flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none"
-        />
-        <select
-          value={categoryId}
-          onChange={(e) => {
-            setCategoryId(e.target.value);
-            setPage(1);
-          }}
-          className={selectClass}
-        >
-          <option value="">Semua kategori</option>
-          {categories.map((c) => (
-            <option key={c.category_id} value={c.category_id}>{c.category_name}</option>
-          ))}
-        </select>
-        <select
-          value={platformId}
-          onChange={(e) => {
-            const nextPlatformId = e.target.value;
-            setSearchParams((prev) => {
-              const params = new URLSearchParams(prev);
-              if (nextPlatformId) {
-                params.set("platform_id", nextPlatformId);
-              } else {
-                params.delete("platform_id");
-              }
-              return params;
-            });
-            setPage(1);
-          }}
-          className={selectClass}
-        >
-          <option value="">Semua platform</option>
-          {platforms.map((p) => (
-            <option key={p.platform_id} value={p.platform_id}>{p.platform_name}</option>
-          ))}
-        </select>
-        <button
-          onClick={resetFilters}
-          className="rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-700 hover:bg-gray-200"
-        >
-          Reset
-        </button>
-      </div>
-
-      {notice && (
-        <p
-          className={`mb-4 rounded-md p-3 text-sm ${
-            notice.type === "success" ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"
-          }`}
-        >
-          {notice.text}
+    <div className="min-h-screen bg-void px-4 py-10 font-display">
+      <div className="mx-auto max-w-6xl">
+        <p className="font-mono text-sm uppercase tracking-[0.3em] text-violet-glow">
+          // Catalog
         </p>
-      )}
-      {error && <p className="mb-4 rounded-md bg-red-50 p-3 text-sm text-red-700">{error}</p>}
+        <h1 className="mt-2 text-4xl font-bold uppercase tracking-widest text-ink">
+          Katalog Game
+        </h1>
+        <p className="mt-2 mb-6 text-muted">
+          Jelajahi koleksi game fisik untuk konsol pilihanmu.
+        </p>
 
-      {loading ? (
-        <p className="py-12 text-center text-gray-500">Memuat produk...</p>
-      ) : products.length === 0 ? (
-        <p className="py-12 text-center text-gray-500">Produk tidak ditemukan.</p>
-      ) : (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {products.map((product) => (
-            <ProductCard
-              key={product.product_id}
-              product={product}
-              canBuy={canBuy}
-              onAdd={handleAdd}
-              adding={addingId === product.product_id}
-            />
-          ))}
+        <div className="mb-6 flex flex-wrap gap-3">
+          <input
+            type="text"
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            placeholder="Cari nama game..."
+            className="min-w-52 flex-1 clip-chamfer-sm border border-line bg-panel px-3 py-2 font-mono text-sm text-ink placeholder-muted/60 focus:border-violet-main focus:outline-none"
+          />
+          <select
+            value={categoryId}
+            onChange={(e) => {
+              setCategoryId(e.target.value);
+              setPage(1);
+            }}
+            className={selectClass}
+          >
+            <option value="" className="bg-panel text-ink">Semua kategori</option>
+            {categories.map((c) => (
+              <option key={c.category_id} value={c.category_id} className="bg-panel text-ink">
+                {c.category_name}
+              </option>
+            ))}
+          </select>
+          <select
+            value={platformId}
+            onChange={(e) => {
+              const nextPlatformId = e.target.value;
+              setSearchParams((prev) => {
+                const params = new URLSearchParams(prev);
+                if (nextPlatformId) {
+                  params.set("platform_id", nextPlatformId);
+                } else {
+                  params.delete("platform_id");
+                }
+                return params;
+              });
+              setPage(1);
+            }}
+            className={selectClass}
+          >
+            <option value="" className="bg-panel text-ink">Semua platform</option>
+            {platforms.map((p) => (
+              <option key={p.platform_id} value={p.platform_id} className="bg-panel text-ink">
+                {p.platform_name}
+              </option>
+            ))}
+          </select>
+          <button
+            onClick={resetFilters}
+            className="clip-chamfer-sm border border-line bg-panel-hi px-4 py-2 font-mono text-xs uppercase tracking-widest text-muted hover:border-violet-main hover:text-ink transition"
+          >
+            Reset
+          </button>
         </div>
-      )}
 
-      {pagination.total_pages > 1 && (
-        <div className="mt-6 flex items-center justify-center gap-4 text-sm">
-          <button
-            onClick={() => setPage(page - 1)}
-            disabled={page <= 1}
-            className="rounded-md bg-white px-3 py-1.5 shadow-sm ring-1 ring-gray-200 hover:bg-gray-50 disabled:opacity-40"
+        {notice && (
+          <p
+            className={`mb-6 clip-chamfer-sm border p-3 font-mono text-sm ${
+              notice.type === "success"
+                ? "border-emerald-500/40 bg-emerald-950/40 text-emerald-300"
+                : "border-red-500/40 bg-red-950/40 text-red-300"
+            }`}
           >
-            Sebelumnya
-          </button>
-          <span className="text-gray-600">
-            Halaman {pagination.page} dari {pagination.total_pages}
-          </span>
-          <button
-            onClick={() => setPage(page + 1)}
-            disabled={page >= pagination.total_pages}
-            className="rounded-md bg-white px-3 py-1.5 shadow-sm ring-1 ring-gray-200 hover:bg-gray-50 disabled:opacity-40"
-          >
-            Berikutnya
-          </button>
-        </div>
-      )}
+            {notice.text}
+          </p>
+        )}
+        {error && (
+          <p className="mb-6 clip-chamfer-sm border border-red-500/40 bg-red-950/40 p-3 font-mono text-sm text-red-300">
+            {error}
+          </p>
+        )}
+
+        {loading ? (
+          <p className="py-16 text-center font-mono text-muted">Memuat produk...</p>
+        ) : products.length === 0 ? (
+          <p className="py-16 text-center font-mono text-muted">Produk tidak ditemukan.</p>
+        ) : (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {products.map((product) => (
+              <ProductCard
+                key={product.product_id}
+                product={product}
+                canBuy={canBuy}
+                onAdd={handleAdd}
+                adding={addingId === product.product_id}
+              />
+            ))}
+          </div>
+        )}
+
+        {pagination.total_pages > 1 && (
+          <div className="mt-10 flex items-center justify-center gap-4 text-sm">
+            <button
+              onClick={() => setPage(page - 1)}
+              disabled={page <= 1}
+              className="clip-chamfer-sm border border-line bg-panel px-4 py-2 font-mono text-xs uppercase tracking-widest text-ink transition hover:border-violet-main hover:text-violet-glow disabled:cursor-not-allowed disabled:opacity-30"
+            >
+              Sebelumnya
+            </button>
+            <span className="font-mono text-xs uppercase tracking-widest text-muted">
+              Halaman {pagination.page} dari {pagination.total_pages}
+            </span>
+            <button
+              onClick={() => setPage(page + 1)}
+              disabled={page >= pagination.total_pages}
+              className="clip-chamfer-sm border border-line bg-panel px-4 py-2 font-mono text-xs uppercase tracking-widest text-ink transition hover:border-violet-main hover:text-violet-glow disabled:cursor-not-allowed disabled:opacity-30"
+            >
+              Berikutnya
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

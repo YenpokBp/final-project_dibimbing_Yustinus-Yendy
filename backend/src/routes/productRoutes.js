@@ -42,6 +42,7 @@ const productBody = [
 router.get(
   "/",
   [
+    query("search").optional().isString().trim(),
     query("page").optional().isInt({ min: 1 }).withMessage("page minimal 1."),
     query("limit")
       .optional()
