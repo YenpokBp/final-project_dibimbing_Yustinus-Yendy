@@ -106,30 +106,30 @@ export default function Products() {
   };
 
   const selectClass =
-    "clip-chamfer-sm border border-line bg-panel px-3 py-2 font-mono text-sm text-ink focus:border-violet-main focus:outline-none";
+    "w-full sm:w-auto clip-chamfer-sm border border-line bg-panel px-3 py-2 font-mono text-sm text-ink focus:border-violet-main focus:outline-none";
 
   const canBuy = user?.role !== "admin";
 
   return (
-    <div className="min-h-screen bg-void px-4 py-10 font-display">
+    <div className="min-h-screen bg-void px-4 py-8 sm:py-10 font-display">
       <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-sm uppercase tracking-[0.3em] text-violet-glow">
+        <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.3em] text-violet-glow">
           // Catalog
         </p>
-        <h1 className="mt-2 text-4xl font-bold uppercase tracking-widest text-ink">
+        <h1 className="mt-1 sm:mt-2 text-3xl sm:text-4xl font-bold uppercase tracking-widest text-ink">
           Katalog Game
         </h1>
-        <p className="mt-2 mb-6 text-muted">
+        <p className="mt-2 mb-6 text-sm sm:text-base text-muted">
           Jelajahi koleksi game fisik untuk konsol pilihanmu.
         </p>
 
-        <div className="mb-6 flex flex-wrap gap-3">
+        <div className="mb-6 flex flex-col sm:flex-row flex-wrap gap-3">
           <input
             type="text"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             placeholder="Cari nama game..."
-            className="min-w-52 flex-1 clip-chamfer-sm border border-line bg-panel px-3 py-2 font-mono text-sm text-ink placeholder-muted/60 focus:border-violet-main focus:outline-none"
+            className="w-full sm:min-w-52 sm:flex-1 clip-chamfer-sm border border-line bg-panel px-3 py-2 font-mono text-sm text-ink placeholder-muted/60 focus:border-violet-main focus:outline-none"
           />
           <select
             value={categoryId}
@@ -172,7 +172,7 @@ export default function Products() {
           </select>
           <button
             onClick={resetFilters}
-            className="clip-chamfer-sm border border-line bg-panel-hi px-4 py-2 font-mono text-xs uppercase tracking-widest text-muted hover:border-violet-main hover:text-ink transition"
+            className="w-full sm:w-auto clip-chamfer-sm border border-line bg-panel-hi px-4 py-2 font-mono text-xs uppercase tracking-widest text-muted hover:border-violet-main hover:text-ink transition text-center"
           >
             Reset
           </button>

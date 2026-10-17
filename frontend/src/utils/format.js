@@ -4,3 +4,11 @@ export const formatRupiah = (value) =>
     currency: "IDR",
     maximumFractionDigits: 0,
   }).format(Number(value));
+
+export const formatDate = (dateString) => {
+  if (!dateString) return "-";
+  return new Intl.DateTimeFormat("id-ID", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(new Date(dateString));
+};

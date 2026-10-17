@@ -28,8 +28,8 @@ export default function Login() {
   };
 
   return (
-    <div className="px-4 py-16">
-      <div className="clip-chamfer mx-auto max-w-md border border-line bg-panel p-8 shadow-[0_0_30px_rgba(124,58,237,0.15)]">
+    <div className="px-4 py-10 sm:py-16">
+      <div className="clip-chamfer mx-auto max-w-md border border-line bg-panel p-6 sm:p-8 shadow-[0_0_30px_rgba(124,58,237,0.15)]">
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-violet-glow">
           // Authentication
         </p>
