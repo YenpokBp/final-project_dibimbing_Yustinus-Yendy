@@ -1,12 +1,14 @@
 import express from "express";
 import { param, query } from "express-validator";
+
+import { authenticate, authorizeRole } from "../middlewares/authMiddleware.js";
+import { validateRequest } from "../middlewares/validateRequest.js";
 import {
   checkout,
   getMyOrders,
   getMyOrderById,
+  cancelMyOrder,
 } from "../controllers/orderController.js";
-import { authenticate, authorizeRole } from "../middlewares/authMiddleware.js";
-import { validateRequest } from "../middlewares/validateRequest.js";
 
 const router = express.Router();
 
@@ -37,5 +39,10 @@ router.get(
   validateRequest,
   getMyOrderById,
 );
-
+router.patch(
+  "/:id/cancel",
+  [param("id").isInt({ min: 1 }).withMessage("ID pesanan tidak valid.")],
+  validateRequest,
+  cancelMyOrder,
+);
 export default router;

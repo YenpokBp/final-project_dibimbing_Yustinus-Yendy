@@ -137,3 +137,57 @@ export const getMyOrderById = async (req, res) => {
     data: order,
   });
 };
+// Dipakai customer (user_id diisi) dan admin (user_id kosong = semua pesanan)
+export const cancelPendingOrder = async (order_id, user_id = null) => {
+  await sequelize.transaction(async (t) => {
+    const where = { order_id };
+    if (user_id) where.user_id = user_id;
+
+    // Kunci baris pesanan agar tidak bisa diubah dua pihak sekaligus
+    const order = await Order.findOne({
+      where,
+      transaction: t,
+      lock: t.LOCK.UPDATE,
+    });
+    if (!order) throw new HttpError(404, "Pesanan tidak ditemukan.");
+
+    if (order.order_status !== "pending") {
+      throw new HttpError(
+        409,
+        `Pesanan berstatus ${order.order_status} dan tidak dapat dibatalkan.`,
+      );
+    }
+
+    const items = await OrderItem.findAll({
+      where: { order_id },
+      order: [["product_id", "ASC"]],
+      transaction: t,
+    });
+
+    // Kembalikan stok tiap produk
+    for (const item of items) {
+      const product = await Product.findByPk(item.product_id, {
+        transaction: t,
+        lock: t.LOCK.UPDATE,
+      });
+      await product.update(
+        { stock: product.stock + item.quantity },
+        { transaction: t },
+      );
+    }
+
+    await order.update({ order_status: "cancelled" }, { transaction: t });
+  });
+
+  return Order.findByPk(order_id, { include: orderInclude });
+};
+
+export const cancelMyOrder = async (req, res) => {
+  const order = await cancelPendingOrder(req.params.id, req.user.user_id);
+
+  res.json({
+    success: true,
+    message: "Pesanan berhasil dibatalkan.",
+    data: order,
+  });
+};
