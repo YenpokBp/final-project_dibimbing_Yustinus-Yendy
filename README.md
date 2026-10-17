@@ -4,8 +4,6 @@ Final Project **Full Stack Web Development Bootcamp Dibimbing**.
 
 OMNI adalah website pemesanan game fisik untuk konsol. Pelanggan memilih platform, melihat katalog game yang tersedia, memasukkan produk ke keranjang, lalu membuat pesanan secara online. Pengambilan barang dan pembayaran dilakukan langsung di toko, sehingga website ini tidak menyediakan pengiriman.
 
-> **Catatan nama:** Frontend saat ini menggunakan brand **OMNI**, sedangkan nama database masih `gamevault_db` dan beberapa teks backend masih menyebut GameVault. Penamaan teknis tersebut dapat diseragamkan pada tahap pengembangan berikutnya.
-
 ## Tujuan Proyek
 
 - Mengembangkan aplikasi full-stack menggunakan React, Express.js, dan MySQL.
@@ -290,14 +288,3 @@ Endpoint kategori dan platform juga menyediakan operasi `POST`, `PUT`, dan `DELE
 - Filter pesanan berdasarkan status dan periode.
 - Tampilan aplikasi pada ukuran desktop dan mobile.
 
-## Kesesuaian dengan Guideline Final Project
-
-Proyek ini mengacu pada ruang lingkup Final Project Full Stack Web Development Bootcamp Dibimbing, yang mencakup:
-
-- Perancangan ERD dan database.
-- Backend/API dengan authentication, role-based authorization, database connection, CRUD, validasi, dan error handling.
-- Integrasi API pada frontend React, state management, dan styling.
-- Admin panel dengan akses berbasis role.
-- Dokumentasi repository, dokumentasi API, deployment, dan presentasi proyek.
-
-Bagian deployment, dokumentasi API final, pengujian menyeluruh, dan presentasi perlu dilengkapi sesuai progres akhir proyek.

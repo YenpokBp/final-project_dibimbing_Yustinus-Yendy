@@ -4,7 +4,11 @@ import ProtectedRoute from "./components/protectedRoutes.jsx";
 import Products from "./pages/products.jsx";
 import Login from "./pages/login.jsx";
 import Register from "./pages/register.jsx";
+import AdminLayout from "./pages/admin/adminLayout.jsx";
 import AdminDashboard from "./pages/admin/adminDashboard.jsx";
+import AdminOrders from "./pages/admin/adminOrders.jsx";
+import AdminProducts from "./pages/admin/adminProducts.jsx";
+import AdminMaster from "./pages/admin/adminMaster.jsx";
 import Home from "./pages/home";
 import Cart from "./pages/cart.jsx";
 import Orders from "./pages/orders.jsx";
@@ -25,7 +29,12 @@ export default function App() {
         </Route>
         {/* Khusus admin */}
         <Route element={<ProtectedRoute roles={["admin"]} />}>
-          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="orders" element={<AdminOrders />} />
+            <Route path="products" element={<AdminProducts />} />
+            <Route path="master" element={<AdminMaster />} />
+          </Route>
         </Route>
       </Routes>
     </div>
