@@ -111,7 +111,7 @@ export default function Navbar() {
         {/* Mobile Hamburger Button */}
         <div className="flex items-center gap-3 md:hidden">
           {user && (
-            <span className="max-w-[120px] truncate font-mono text-xs text-muted">
+            <span className="max-w-30 truncate font-mono text-xs text-muted">
               // {user.name}
             </span>
           )}

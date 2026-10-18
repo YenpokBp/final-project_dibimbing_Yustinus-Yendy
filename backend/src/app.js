@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Server GameVault siap");
+  res.send("Server OMNI siap");
 });
 
 app.use("/api/auth", authRoutes);
