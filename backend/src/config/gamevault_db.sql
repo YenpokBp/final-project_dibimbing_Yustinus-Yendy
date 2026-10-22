@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 17, 2026 at 12:15 PM
+-- Generation Time: Oct 22, 2026 at 05:49 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -64,8 +64,7 @@ CREATE TABLE `cart_items` (
 
 INSERT INTO `cart_items` (`cart_item_id`, `cart_id`, `product_id`, `quantity`) VALUES
 (4, 2, 1, 6),
-(5, 3, 1, 6),
-(24, 6, 44, 5);
+(5, 3, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -115,18 +114,20 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`order_id`, `user_id`, `order_status`, `total_amount`, `created_at`, `paid_at`) VALUES
 (1, 19, 'pending', '1700000.00', '2026-10-15 05:39:08', NULL),
 (2, 19, 'pending', '1700000.00', '2026-10-15 05:40:26', NULL),
-(3, 22, 'pending', '1700000.00', '2026-10-17 02:21:41', NULL),
-(4, 22, 'pending', '1700000.00', '2026-10-17 02:25:08', NULL),
-(5, 22, 'pending', '1700000.00', '2026-10-17 02:27:07', NULL),
-(6, 22, 'pending', '1700000.00', '2026-10-17 02:35:18', NULL),
-(7, 22, 'pending', '3196000.00', '2026-10-17 02:44:59', NULL),
-(8, 22, 'pending', '1700000.00', '2026-10-17 02:44:59', NULL),
-(9, 22, 'pending', '1700000.00', '2026-10-17 02:46:32', NULL),
-(10, 22, 'pending', '1700000.00', '2026-10-17 02:46:46', NULL),
-(11, 23, 'pending', '1700000.00', '2026-10-17 02:47:17', NULL),
+(3, 22, 'cancelled', '1700000.00', '2026-10-17 02:21:41', NULL),
+(4, 22, 'paid', '1700000.00', '2026-10-17 02:25:08', '2026-10-18 00:08:04'),
+(5, 22, 'paid', '1700000.00', '2026-10-17 02:27:07', '2026-10-18 00:07:55'),
+(6, 22, 'paid', '1700000.00', '2026-10-17 02:35:18', '2026-10-18 00:07:53'),
+(7, 22, 'cancelled', '3196000.00', '2026-10-17 02:44:59', NULL),
+(8, 22, 'paid', '1700000.00', '2026-10-17 02:44:59', '2026-10-18 00:07:43'),
+(9, 22, 'paid', '1700000.00', '2026-10-17 02:46:32', '2026-10-18 00:07:41'),
+(10, 22, 'paid', '1700000.00', '2026-10-17 02:46:46', '2026-10-17 13:42:20'),
+(11, 23, 'paid', '1700000.00', '2026-10-17 02:47:17', '2026-10-17 13:42:16'),
 (12, 23, 'paid', '850000.00', '2026-10-17 03:33:17', '2026-10-17 03:33:19'),
 (13, 23, 'cancelled', '850000.00', '2026-10-17 03:33:17', NULL),
-(14, 23, 'cancelled', '850000.00', '2026-10-17 03:33:17', NULL);
+(14, 23, 'cancelled', '850000.00', '2026-10-17 03:33:17', NULL),
+(15, 25, 'cancelled', '4843000.00', '2026-10-17 12:38:12', NULL),
+(16, 25, 'paid', '2946000.00', '2026-10-17 13:45:50', '2026-10-17 13:46:18');
 
 -- --------------------------------------------------------
 
@@ -162,7 +163,12 @@ INSERT INTO `order_items` (`order_item_id`, `order_id`, `product_id`, `product_n
 (11, 11, 1, 'God of War Ragnarok', '850000.00', 2, '1700000.00'),
 (12, 12, 1, 'God of War Ragnarok', '850000.00', 1, '850000.00'),
 (13, 13, 1, 'God of War Ragnarok', '850000.00', 1, '850000.00'),
-(14, 14, 1, 'God of War Ragnarok', '850000.00', 1, '850000.00');
+(14, 14, 1, 'God of War Ragnarok', '850000.00', 1, '850000.00'),
+(15, 15, 44, 'Super Mario Odyssey', '699000.00', 6, '4194000.00'),
+(16, 15, 45, 'Super Mario Bros. Wonder', '649000.00', 1, '649000.00'),
+(17, 16, 2, 'EA Sports FC 26', '749000.00', 1, '749000.00'),
+(18, 16, 20, 'Elden Ring', '699000.00', 2, '1398000.00'),
+(19, 16, 32, 'Tekken 8', '799000.00', 1, '799000.00');
 
 -- --------------------------------------------------------
 
@@ -197,7 +203,7 @@ CREATE TABLE `products` (
   `platform_id` int NOT NULL,
   `price` decimal(12,2) NOT NULL,
   `stock` int NOT NULL DEFAULT '0',
-  `image_url` varchar(255) DEFAULT NULL,
+  `image_url` varchar(500) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -206,9 +212,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `category_id`, `platform_id`, `price`, `stock`, `image_url`, `created_at`) VALUES
-(1, 'God of War Ragnarok', 1, 1, '850000.00', 91, 'god_of_war_ragnarok_ps5.jpg', '2026-10-10 04:23:27'),
-(2, 'EA Sports FC 26', 3, 1, '749000.00', 20, 'fc_26_ps5.jpg', '2026-10-10 04:23:27'),
-(3, 'The Legend of Zelda: Tears of the Kingdom', 1, 2, '799000.00', 6, 'zelda_totk_switch.jpg', '2026-10-10 04:23:27'),
+(1, 'God of War Ragnarok', 1, 1, '850000.00', 93, 'https://URL-GAMBAR-GOD-OF-WAR', '2026-10-10 04:23:27'),
+(2, 'EA Sports FC 26', 3, 1, '749000.00', 19, 'fc_26_ps5.jpg', '2026-10-10 04:23:27'),
+(3, 'The Legend of Zelda: Tears of the Kingdom', 1, 2, '799000.00', 10, 'zelda_totk_switch.jpg', '2026-10-10 04:23:27'),
 (4, 'Cyberpunk 2077: Ultimate Edition', 2, 3, '699000.00', 8, 'cyberpunk_xbox.jpg', '2026-10-10 04:23:27'),
 (5, 'EA Sports FC 26', 3, 2, '729000.00', 12, 'fc_26_switch.jpg', '2026-10-10 04:23:27'),
 (15, 'Marvel\'s Spider-Man 2', 1, 1, '849000.00', 18, 'spiderman_2_ps5.jpg', '2026-10-11 01:41:14'),
@@ -216,7 +222,7 @@ INSERT INTO `products` (`product_id`, `product_name`, `category_id`, `platform_i
 (17, 'Hogwarts Legacy', 1, 3, '649000.00', 10, 'hogwarts_legacy_xbox.jpg', '2026-10-11 01:41:14'),
 (18, 'Hogwarts Legacy', 1, 2, '629000.00', 7, 'hogwarts_legacy_switch.jpg', '2026-10-11 01:41:14'),
 (19, 'Assassin\'s Creed Mirage', 1, 1, '599000.00', 16, 'ac_mirage_ps5.jpg', '2026-10-11 01:41:14'),
-(20, 'Elden Ring', 2, 1, '699000.00', 20, 'elden_ring_ps5.jpg', '2026-10-11 01:41:14'),
+(20, 'Elden Ring', 2, 1, '699000.00', 18, 'elden_ring_ps5.jpg', '2026-10-11 01:41:14'),
 (21, 'Elden Ring', 2, 3, '699000.00', 9, 'elden_ring_xbox.jpg', '2026-10-11 01:41:14'),
 (22, 'Baldur\'s Gate 3', 2, 1, '799000.00', 11, 'baldurs_gate_3_ps5.jpg', '2026-10-11 01:41:14'),
 (23, 'Final Fantasy XVI', 2, 1, '749000.00', 8, 'ffxvi_ps5.jpg', '2026-10-11 01:41:14'),
@@ -228,7 +234,7 @@ INSERT INTO `products` (`product_id`, `product_name`, `category_id`, `platform_i
 (29, 'Gran Turismo 7', 4, 1, '749000.00', 14, 'gran_turismo_7_ps5.jpg', '2026-10-11 01:41:14'),
 (30, 'Forza Horizon 5', 4, 3, '699000.00', 17, 'forza_horizon_5_xbox.jpg', '2026-10-11 01:41:14'),
 (31, 'Mario Kart 8 Deluxe', 4, 2, '749000.00', 30, 'mario_kart_8_switch.jpg', '2026-10-11 01:41:14'),
-(32, 'Tekken 8', 5, 1, '799000.00', 12, 'tekken_8_ps5.jpg', '2026-10-11 01:41:14'),
+(32, 'Tekken 8', 5, 1, '799000.00', 11, 'tekken_8_ps5.jpg', '2026-10-11 01:41:14'),
 (33, 'Street Fighter 6', 5, 3, '699000.00', 10, 'street_fighter_6_xbox.jpg', '2026-10-11 01:41:14'),
 (34, 'Super Smash Bros. Ultimate', 5, 2, '799000.00', 19, 'smash_bros_ultimate_switch.jpg', '2026-10-11 01:41:14'),
 (35, 'Call of Duty: Modern Warfare III', 6, 1, '849000.00', 21, 'cod_mw3_ps5.jpg', '2026-10-11 01:41:14'),
@@ -369,7 +375,7 @@ ALTER TABLE `carts`
 -- AUTO_INCREMENT for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  MODIFY `cart_item_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `cart_item_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -381,13 +387,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `order_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `order_item_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `order_item_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `platforms`
