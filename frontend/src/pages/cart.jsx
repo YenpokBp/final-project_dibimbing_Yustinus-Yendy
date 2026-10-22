@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api, { getErrorMessage } from "../services/api.js";
-import { formatRupiah } from "../utils/format.js";
+import { formatRupiah, getImageSrc } from "../utils/format.js";
 
 function CartThumb({ item }) {
   const [imgError, setImgError] = useState(false);
@@ -10,8 +10,9 @@ function CartThumb({ item }) {
     <div className="flex h-16 w-16 sm:h-20 sm:w-20 shrink-0 items-center justify-center overflow-hidden border border-line bg-panel-hi">
       {item.image_url && !imgError ? (
         <img
-          src={`/images/${item.image_url}`}
+          src={getImageSrc(item.image_url)}
           alt={item.product_name}
+          referrerPolicy="no-referrer"
           onError={() => setImgError(true)}
           className="h-full w-full object-cover"
         />

@@ -12,3 +12,9 @@ export const formatDate = (dateString) => {
     timeStyle: "short",
   }).format(new Date(dateString));
 };
+// Kalau image_url sudah URL lengkap, pakai langsung.
+// Kalau cuma nama file, fallback ke folder lokal /images/.
+export function getImageSrc(imageUrl) {
+  if (!imageUrl) return null;
+  return /^https?:\/\//i.test(imageUrl) ? imageUrl : `/images/${imageUrl}`;
+}

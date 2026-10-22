@@ -35,8 +35,11 @@ const productBody = [
   body("image_url")
     .optional({ values: "null" })
     .trim()
-    .isLength({ max: 255 })
-    .withMessage("Nama file gambar maksimal 255 karakter."),
+    .isLength({ max: 500 })
+    .withMessage("URL gambar maksimal 500 karakter.")
+    .bail()
+    .custom((v) => !v || /^https?:\/\/.+/i.test(v) || /^[\w.\-]+$/.test(v))
+    .withMessage("Isi dengan URL lengkap (https://...) atau nama file."),
 ];
 
 router.get(

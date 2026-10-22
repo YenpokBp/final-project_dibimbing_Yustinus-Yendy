@@ -23,7 +23,7 @@ const Product = sequelize.define(
       defaultValue: 0,
       validate: { min: 0 },
     },
-    image_url: { type: DataTypes.STRING(255), allowNull: true },
+    image_url: { type: DataTypes.STRING(500), allowNull: true },
   },
   {
     tableName: "products",

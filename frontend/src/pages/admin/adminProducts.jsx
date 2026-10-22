@@ -325,12 +325,12 @@ export default function AdminProducts() {
                 />
               </Field>
             </div>
-            <Field label="Nama file gambar (opsional)" error={fieldErrors.image_url}>
+            <Field label="URL gambar (opsional)" error={fieldErrors.image_url}>
               <input
-                maxLength={255}
+                maxLength={500}
                 value={form.image_url}
                 onChange={setField("image_url")}
-                placeholder="contoh: zelda.jpg"
+                placeholder="https://contoh.com/zelda.jpg"
                 className={inputClass}
               />
             </Field>

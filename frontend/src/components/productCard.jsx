@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { formatRupiah } from "../utils/format.js";
-
+import { formatRupiah, getImageSrc } from "../utils/format.js";
 export default function ProductCard({ product, canBuy, onAdd, adding }) {
   const [imgError, setImgError] = useState(false);
   const outOfStock = product.stock === 0;
@@ -11,8 +10,10 @@ export default function ProductCard({ product, canBuy, onAdd, adding }) {
       <div className="relative flex aspect-3/4 items-center justify-center overflow-hidden bg-panel-hi">
         {product.image_url && !imgError ? (
           <img
-            src={`/images/${product.image_url}`}
+            src={getImageSrc(product.image_url)}
             alt={product.product_name}
+            referrerPolicy="no-referrer"
+            loading="lazy"
             onError={() => setImgError(true)}
             className={`h-full w-full object-cover transition duration-300 group-hover:scale-105 ${
               outOfStock ? "opacity-40 grayscale" : ""
