@@ -38,12 +38,12 @@ export default function OrderDetail() {
   return (
     <div className="min-h-screen bg-void px-4 py-8 sm:py-10 font-display">
       <div className="mx-auto max-w-3xl">
-        <Link to="/orders" className="font-mono text-sm text-muted hover:text-violet-glow">
+        <Link to="/orders" className="font-mono text-sm text-muted hover:text-primary-glow">
           ← Kembali ke pesanan
         </Link>
 
         {error && (
-          <p className="mt-6 border border-red-500/40 bg-red-950/40 p-3 text-sm text-red-300">
+          <p className="mt-6 border border-danger/40 bg-danger/10 p-3 text-sm text-danger">
             {error}
           </p>
         )}
@@ -87,7 +87,7 @@ export default function OrderDetail() {
 
             <div className="mt-4 flex items-center justify-between text-lg">
               <span className="text-ink">Total</span>
-              <span className="font-mono text-violet-glow">
+              <span className="font-mono text-primary-glow">
                 {formatRupiah(order.total_amount)}
               </span>
             </div>
@@ -106,7 +106,7 @@ export default function OrderDetail() {
                 <button
                   onClick={handleCancel}
                   disabled={cancelling}
-                  className="clip-chamfer-sm mt-3 border border-red-500/50 px-4 py-2 font-mono text-sm text-red-300 transition hover:bg-red-950/40 disabled:opacity-60"
+                  className="clip-chamfer-sm mt-3 border border-danger/40 px-4 py-2 font-mono text-sm text-danger transition hover:bg-danger/20 disabled:opacity-60"
                 >
                   {cancelling ? "Membatalkan..." : "Batalkan pesanan"}
                 </button>

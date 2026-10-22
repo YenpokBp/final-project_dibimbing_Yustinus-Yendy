@@ -24,7 +24,7 @@ function StatCard({ label, value, accent }) {
   return (
     <div className="clip-chamfer-sm border border-line bg-panel p-4">
       <p className="font-mono text-xs uppercase tracking-wider text-muted">{label}</p>
-      <p className={`mt-2 break-words font-mono text-2xl font-bold ${accent ?? "text-ink"}`}>
+      <p className={`mt-2 wrap-break-words font-mono text-2xl font-bold ${accent ?? "text-ink"}`}>
         {value}
       </p>
     </div>
@@ -129,12 +129,12 @@ export default function AdminDashboard() {
         <StatCard
           label="Pendapatan"
           value={summary ? formatRupiah(summary.total_revenue) : "-"}
-          accent="text-violet-glow"
+          accent="text-primary-glow"
         />
         <StatCard label="Total pesanan" value={summary?.orders.total ?? "-"} />
-        <StatCard label="Pending" value={summary?.orders.pending ?? "-"} accent="text-yellow-300" />
-        <StatCard label="Lunas" value={summary?.orders.paid ?? "-"} accent="text-green-300" />
-        <StatCard label="Dibatalkan" value={summary?.orders.cancelled ?? "-"} accent="text-red-300" />
+        <StatCard label="Pending" value={summary?.orders.pending ?? "-"} accent="text-warning" />
+        <StatCard label="Lunas" value={summary?.orders.paid ?? "-"} accent="text-success" />
+        <StatCard label="Dibatalkan" value={summary?.orders.cancelled ?? "-"} accent="text-danger" />
       </section>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-2">
@@ -155,14 +155,14 @@ export default function AdminDashboard() {
                   <li key={b.product_id}>
                     <div className="flex items-baseline justify-between gap-3 text-sm">
                       <span className="truncate text-ink">
-                        <span className="mr-2 font-mono text-violet-glow">#{i + 1}</span>
+                        <span className="mr-2 font-mono text-primary-glow">#{i + 1}</span>
                         {b.product_name}
                       </span>
                       <span className="shrink-0 font-mono text-muted">{b.total_sold} terjual</span>
                     </div>
                     <div className="mt-1.5 h-2 bg-panel-hi">
                       <div
-                        className="h-full bg-violet-main"
+                        className="h-full bg-primary"
                         style={{ width: `${(b.total_sold / maxSold) * 100}%` }}
                       />
                     </div>
@@ -212,7 +212,7 @@ export default function AdminDashboard() {
                       <td className={`${td} text-muted`}>{p.platform?.platform_name}</td>
                       <td
                         className={`${td} text-right font-mono font-bold ${
-                          p.stock === 0 ? "text-red-300" : "text-yellow-300"
+                          p.stock === 0 ? "text-danger" : "text-warning"
                         }`}
                       >
                         {p.stock}

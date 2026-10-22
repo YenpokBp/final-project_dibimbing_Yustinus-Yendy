@@ -12,7 +12,7 @@ export default function PlatformCard({ platform, index }) {
   return (
     <Link
       to={`/products?platform_id=${platform.platform_id}`}
-      className="group clip-chamfer relative block h-72 overflow-hidden border border-line bg-linear-to-br from-panel-hi to-panel transition duration-300 hover:-translate-y-1 hover:border-violet-main hover:shadow-[0_0_30px_rgba(124,58,237,0.35)]"
+      className="group clip-chamfer relative block h-72 overflow-hidden border border-line bg-linear-to-br from-panel-hi to-panel transition duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-[0_0_30px_rgba(14,165,198,0.35)]"
     >
       {!imgError && (
         <img
@@ -25,14 +25,14 @@ export default function PlatformCard({ platform, index }) {
       <div className="absolute inset-0 bg-linear-to-t from-void via-void/60 to-transparent" />
 
       <div className="relative flex h-full flex-col justify-between p-6">
-        <span className="font-mono text-sm text-violet-glow">
+        <span className="font-mono text-sm text-primary-glow">
           // {String(index + 1).padStart(2, "0")}
         </span>
         <div>
           <h2 className="text-3xl font-bold uppercase tracking-widest text-ink">
             {platform.platform_name}
           </h2>
-          <p className="mt-2 font-mono text-xs uppercase tracking-widest text-muted transition group-hover:text-violet-glow">
+          <p className="mt-2 font-mono text-xs uppercase tracking-widest text-muted transition group-hover:text-primary-glow">
             Lihat game →
           </p>
         </div>

@@ -84,7 +84,7 @@ export default function Cart() {
   const items = cart?.items ?? [];
 
   const qtyButton =
-    "h-8 w-8 border border-line text-ink transition hover:border-violet-main hover:text-violet-glow disabled:cursor-not-allowed disabled:opacity-40";
+    "h-8 w-8 border border-line text-ink transition hover:border-primary hover:text-primary-glow disabled:cursor-not-allowed disabled:opacity-40";
 
   return (
     <div className="min-h-screen bg-void px-4 py-8 sm:py-10 font-display">
@@ -92,7 +92,7 @@ export default function Cart() {
         <h1 className="text-3xl sm:text-4xl font-bold tracking-widest text-ink">Keranjang</h1>
 
         {error && (
-          <p className="mt-6 border border-red-500/40 bg-red-950/40 p-3 text-sm text-red-300">
+          <p className="mt-6 border border-danger/40 bg-danger/10 p-3 text-sm text-danger">
             {error}
           </p>
         )}
@@ -107,7 +107,7 @@ export default function Cart() {
             </p>
             <Link
               to="/products"
-              className="clip-chamfer-sm mt-5 inline-block bg-violet-main px-5 py-2 font-mono text-sm text-white hover:bg-violet-deep"
+              className="clip-chamfer-sm mt-5 inline-block bg-primary px-5 py-2 font-mono text-sm text-void hover:bg-primary-glow"
             >
               Lihat katalog
             </Link>
@@ -127,7 +127,7 @@ export default function Cart() {
                       <CartThumb item={item} />
                       <div className="sm:hidden flex-1">
                         <h2 className="font-semibold text-ink leading-tight">{item.product_name}</h2>
-                        <p className="font-mono text-xs text-violet-glow mt-0.5">
+                        <p className="font-mono text-xs text-primary-glow mt-0.5">
                           {formatRupiah(item.subtotal)}
                         </p>
                       </div>
@@ -141,7 +141,7 @@ export default function Cart() {
                             {formatRupiah(item.price)} · Stok {item.stock}
                           </p>
                         </div>
-                        <p className="font-mono text-violet-glow">
+                        <p className="font-mono text-primary-glow">
                           {formatRupiah(item.subtotal)}
                         </p>
                       </div>
@@ -172,7 +172,7 @@ export default function Cart() {
                         <button
                           onClick={() => handleDelete(item)}
                           disabled={busy}
-                          className="text-sm text-muted transition hover:text-red-400 disabled:opacity-40"
+                          className="text-sm text-muted transition hover:text-danger disabled:opacity-40"
                         >
                           Hapus
                         </button>
@@ -192,7 +192,7 @@ export default function Cart() {
                 </div>
                 <div className="flex justify-between border-t border-line pt-3 text-base">
                   <dt className="text-ink">Total</dt>
-                  <dd className="font-mono text-violet-glow">
+                  <dd className="font-mono text-primary-glow">
                     {formatRupiah(cart.total_amount)}
                   </dd>
                 </div>
@@ -201,7 +201,7 @@ export default function Cart() {
               <button
                 onClick={handleCheckout}
                 disabled={checkingOut || busyId !== null}
-                className="clip-chamfer-sm mt-5 w-full bg-violet-main py-2.5 font-mono text-sm text-white transition hover:bg-violet-deep disabled:cursor-not-allowed disabled:opacity-60"
+                className="clip-chamfer-sm mt-5 w-full bg-primary py-2.5 font-mono text-sm text-void transition hover:bg-primary-glow disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {checkingOut ? "Memproses..." : "Checkout"}
               </button>

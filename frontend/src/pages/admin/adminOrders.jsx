@@ -156,7 +156,7 @@ export default function AdminOrders() {
                   </td>
                   <td className={`${td} whitespace-nowrap text-muted`}>{formatDate(o.created_at)}</td>
                   <td className={`${td} font-mono`}>{o.items?.length ?? 0}</td>
-                  <td className={`${td} whitespace-nowrap font-mono text-violet-glow`}>
+                  <td className={`${td} whitespace-nowrap font-mono text-primary-glow`}>
                     {formatRupiah(o.total_amount)}
                   </td>
                   <td className={td}>
@@ -187,7 +187,7 @@ export default function AdminOrders() {
             <span className="ml-2 font-mono text-xs text-muted">{selected.user?.email}</span>
           </p>
           {selected.paid_at && (
-            <p className="mt-1 font-mono text-xs text-green-300">
+            <p className="mt-1 font-mono text-xs text-success">
               Dibayar: {formatDate(selected.paid_at)}
             </p>
           )}
@@ -216,7 +216,7 @@ export default function AdminOrders() {
           </div>
 
           <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-            <p className="font-mono text-lg font-bold text-violet-glow">
+            <p className="font-mono text-lg font-bold text-primary-glow">
               Total {formatRupiah(selected.total_amount)}
             </p>
             <div className="flex gap-2">

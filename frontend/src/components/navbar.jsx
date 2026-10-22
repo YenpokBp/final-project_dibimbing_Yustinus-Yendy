@@ -4,13 +4,13 @@ import { useAuth } from "../context/authContext.jsx";
 
 const linkClass = ({ isActive }) =>
   `font-mono text-sm uppercase tracking-widest transition ${
-    isActive ? "text-violet-glow" : "text-muted hover:text-ink"
+    isActive ? "text-primary-glow" : "text-muted hover:text-ink"
   }`;
 
 const mobileLinkClass = ({ isActive }) =>
   `block w-full py-2.5 px-3 font-mono text-sm uppercase tracking-widest transition ${
     isActive
-      ? "border-l-2 border-violet-main bg-violet-deep/30 text-violet-glow"
+      ? "border-l-2 border-primary bg-primary-deep/30 text-primary-glow"
       : "text-muted hover:bg-panel-hi hover:text-ink"
   }`;
 
@@ -45,7 +45,7 @@ export default function Navbar() {
         <Link
           to="/"
           onClick={closeMenu}
-          className="text-2xl font-bold uppercase tracking-[0.35em] text-violet-glow transition hover:opacity-90"
+          className="text-2xl font-bold uppercase tracking-[0.35em] text-primary-glow transition hover:opacity-90"
         >
           Omni
         </Link>
@@ -88,7 +88,7 @@ export default function Navbar() {
               </span>
               <button
                 onClick={handleLogout}
-                className="clip-chamfer-sm border border-line px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-ink transition hover:border-violet-main hover:text-violet-glow"
+                className="clip-chamfer-sm border border-line px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-ink transition hover:border-primary hover:text-primary-glow"
               >
                 Keluar
               </button>
@@ -100,7 +100,7 @@ export default function Navbar() {
               </NavLink>
               <Link
                 to="/register"
-                className="clip-chamfer-sm bg-violet-main px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-white transition hover:bg-violet-deep"
+                className="clip-chamfer-sm bg-primary px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-void transition hover:bg-primary-glow"
               >
                 Daftar
               </Link>
@@ -117,7 +117,7 @@ export default function Navbar() {
           )}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="clip-chamfer-sm border border-line p-2 text-ink hover:border-violet-main hover:text-violet-glow focus:outline-none"
+            className="clip-chamfer-sm border border-line p-2 text-ink hover:border-primary hover:text-primary-glow focus:outline-none"
             aria-label="Menu navigasi"
             aria-expanded={mobileMenuOpen}
           >
@@ -170,7 +170,7 @@ export default function Navbar() {
             {user ? (
               <button
                 onClick={handleLogout}
-                className="clip-chamfer-sm w-full border border-line py-2 text-center font-mono text-xs uppercase tracking-widest text-ink transition hover:border-violet-main hover:text-violet-glow"
+                className="clip-chamfer-sm w-full border border-line py-2 text-center font-mono text-xs uppercase tracking-widest text-ink transition hover:border-primary hover:text-primary-glow"
               >
                 Keluar ({user.name})
               </button>
@@ -179,14 +179,14 @@ export default function Navbar() {
                 <Link
                   to="/login"
                   onClick={closeMenu}
-                  className="clip-chamfer-sm border border-line py-2 text-center font-mono text-xs uppercase tracking-widest text-ink transition hover:border-violet-main hover:text-violet-glow"
+                  className="clip-chamfer-sm border border-line py-2 text-center font-mono text-xs uppercase tracking-widest text-ink transition hover:border-primary hover:text-primary-glow"
                 >
                   Masuk
                 </Link>
                 <Link
                   to="/register"
                   onClick={closeMenu}
-                  className="clip-chamfer-sm bg-violet-main py-2 text-center font-mono text-xs uppercase tracking-widest text-white transition hover:bg-violet-deep"
+                  className="clip-chamfer-sm bg-primary py-2 text-center font-mono text-xs uppercase tracking-widest text-void transition hover:bg-primary-glow"
                 >
                   Daftar
                 </Link>

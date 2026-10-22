@@ -106,14 +106,14 @@ export default function Products() {
   };
 
   const selectClass =
-    "w-full sm:w-auto clip-chamfer-sm border border-line bg-panel px-3 py-2 font-mono text-sm text-ink focus:border-violet-main focus:outline-none";
+    "w-full sm:w-auto clip-chamfer-sm border border-line bg-panel px-3 py-2 font-mono text-sm text-ink focus:border-primary focus:outline-none";
 
   const canBuy = user?.role !== "admin";
 
   return (
     <div className="min-h-screen bg-void px-4 py-8 sm:py-10 font-display">
       <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.3em] text-violet-glow">
+        <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.3em] text-primary-glow">
           // Catalog
         </p>
         <h1 className="mt-1 sm:mt-2 text-3xl sm:text-4xl font-bold uppercase tracking-widest text-ink">
@@ -129,7 +129,7 @@ export default function Products() {
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             placeholder="Cari nama game..."
-            className="w-full sm:min-w-52 sm:flex-1 clip-chamfer-sm border border-line bg-panel px-3 py-2 font-mono text-sm text-ink placeholder-muted/60 focus:border-violet-main focus:outline-none"
+            className="w-full sm:min-w-52 sm:flex-1 clip-chamfer-sm border border-line bg-panel px-3 py-2 font-mono text-sm text-ink placeholder:text-muted focus:border-primary focus:outline-none"
           />
           <select
             value={categoryId}
@@ -172,7 +172,7 @@ export default function Products() {
           </select>
           <button
             onClick={resetFilters}
-            className="w-full sm:w-auto clip-chamfer-sm border border-line bg-panel-hi px-4 py-2 font-mono text-xs uppercase tracking-widest text-muted hover:border-violet-main hover:text-ink transition text-center"
+            className="w-full sm:w-auto clip-chamfer-sm border border-line bg-panel-hi px-4 py-2 font-mono text-xs uppercase tracking-widest text-muted hover:border-primary hover:text-ink transition text-center"
           >
             Reset
           </button>
@@ -182,15 +182,15 @@ export default function Products() {
           <p
             className={`mb-6 clip-chamfer-sm border p-3 font-mono text-sm ${
               notice.type === "success"
-                ? "border-emerald-500/40 bg-emerald-950/40 text-emerald-300"
-                : "border-red-500/40 bg-red-950/40 text-red-300"
+                ? "border-success/40 bg-success/10 text-success"
+                : "border-danger/40 bg-danger/10 text-danger"
             }`}
           >
             {notice.text}
           </p>
         )}
         {error && (
-          <p className="mb-6 clip-chamfer-sm border border-red-500/40 bg-red-950/40 p-3 font-mono text-sm text-red-300">
+          <p className="mb-6 clip-chamfer-sm border border-danger/40 bg-danger/10 p-3 font-mono text-sm text-danger">
             {error}
           </p>
         )}
@@ -218,7 +218,7 @@ export default function Products() {
             <button
               onClick={() => setPage(page - 1)}
               disabled={page <= 1}
-              className="clip-chamfer-sm border border-line bg-panel px-4 py-2 font-mono text-xs uppercase tracking-widest text-ink transition hover:border-violet-main hover:text-violet-glow disabled:cursor-not-allowed disabled:opacity-30"
+              className="clip-chamfer-sm border border-line bg-panel px-4 py-2 font-mono text-xs uppercase tracking-widest text-ink transition hover:border-primary hover:text-primary-glow disabled:cursor-not-allowed disabled:opacity-30"
             >
               Sebelumnya
             </button>
@@ -228,7 +228,7 @@ export default function Products() {
             <button
               onClick={() => setPage(page + 1)}
               disabled={page >= pagination.total_pages}
-              className="clip-chamfer-sm border border-line bg-panel px-4 py-2 font-mono text-xs uppercase tracking-widest text-ink transition hover:border-violet-main hover:text-violet-glow disabled:cursor-not-allowed disabled:opacity-30"
+              className="clip-chamfer-sm border border-line bg-panel px-4 py-2 font-mono text-xs uppercase tracking-widest text-ink transition hover:border-primary hover:text-primary-glow disabled:cursor-not-allowed disabled:opacity-30"
             >
               Berikutnya
             </button>

@@ -1,7 +1,7 @@
 const STYLES = {
-  pending: "border-yellow-500/40 bg-yellow-950/40 text-yellow-300",
-  paid: "border-green-500/40 bg-green-950/40 text-green-300",
-  cancelled: "border-red-500/40 bg-red-950/40 text-red-300",
+  pending: "border-warning/40 bg-warning/10 text-warning",
+  paid: "border-success/40 bg-success/10 text-success",
+  cancelled: "border-danger/40 bg-danger/10 text-danger",
 };
 
 const LABELS = {

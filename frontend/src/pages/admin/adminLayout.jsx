@@ -11,8 +11,8 @@ export default function AdminLayout() {
   const linkClass = ({ isActive }) =>
     `clip-chamfer-sm whitespace-nowrap border px-4 py-2 font-mono text-sm transition ${
       isActive
-        ? "border-violet-main bg-violet-deep/40 text-ink"
-        : "border-line text-muted hover:border-violet-main hover:text-ink"
+        ? "border-primary bg-primary-deep/40 text-ink"
+        : "border-line text-muted hover:border-primary hover:text-ink"
     }`;
 
   return (

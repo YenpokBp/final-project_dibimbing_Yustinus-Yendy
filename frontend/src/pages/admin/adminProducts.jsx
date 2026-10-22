@@ -233,7 +233,7 @@ export default function AdminProducts() {
                   </td>
                   <td
                     className={`${td} text-right font-mono font-bold ${
-                      p.stock === 0 ? "text-red-300" : p.stock <= 10 ? "text-yellow-300" : ""
+                      p.stock === 0 ? "text-danger" : p.stock <= 10 ? "text-warning" : ""
                     }`}
                   >
                     {p.stock}

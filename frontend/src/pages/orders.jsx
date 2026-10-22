@@ -45,7 +45,7 @@ export default function Orders() {
   }, [status, page]);
 
   const pageButton =
-    "border border-line px-3 py-1.5 text-ink transition hover:border-violet-main disabled:cursor-not-allowed disabled:opacity-40";
+    "border border-line px-3 py-1.5 text-ink transition hover:border-primary disabled:cursor-not-allowed disabled:opacity-40";
 
   return (
     <div className="min-h-screen bg-void px-4 py-8 sm:py-10 font-display">
@@ -59,7 +59,7 @@ export default function Orders() {
               setStatus(e.target.value);
               setPage(1);
             }}
-            className="w-full sm:w-auto clip-chamfer-sm border border-line bg-panel px-3 py-2 font-mono text-sm text-ink focus:border-violet-main focus:outline-none"
+            className="w-full sm:w-auto clip-chamfer-sm border border-line bg-panel px-3 py-2 font-mono text-sm text-ink focus:border-primary focus:outline-none"
           >
             <option value="">Semua status</option>
             <option value="pending">Menunggu pembayaran</option>
@@ -69,7 +69,7 @@ export default function Orders() {
         </div>
 
         {error && (
-          <p className="mt-6 border border-red-500/40 bg-red-950/40 p-3 text-sm text-red-300">
+          <p className="mt-6 border border-danger/40 bg-danger/10 p-3 text-sm text-danger">
             {error}
           </p>
         )}
@@ -81,7 +81,7 @@ export default function Orders() {
             <p className="text-lg text-ink">Belum ada pesanan.</p>
             <Link
               to="/products"
-              className="clip-chamfer-sm mt-5 inline-block bg-violet-main px-5 py-2 font-mono text-sm text-white hover:bg-violet-deep"
+              className="clip-chamfer-sm mt-5 inline-block bg-primary px-5 py-2 font-mono text-sm text-void hover:bg-primary-glow"
             >
               Lihat katalog
             </Link>
@@ -92,7 +92,7 @@ export default function Orders() {
               <li key={order.order_id}>
                 <Link
                   to={`/orders/${order.order_id}`}
-                  className="block border border-line bg-panel p-4 transition hover:border-violet-main"
+                  className="block border border-line bg-panel p-4 transition hover:border-primary"
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span className="font-mono text-ink">Pesanan #{order.order_id}</span>
@@ -102,7 +102,7 @@ export default function Orders() {
                     <span className="text-muted text-xs sm:text-sm">
                       {formatDate(order.created_at)} · {order.items?.length ?? 0} item
                     </span>
-                    <span className="font-mono text-violet-glow font-bold">
+                    <span className="font-mono text-primary-glow font-bold">
                       {formatRupiah(order.total_amount)}
                     </span>
                   </div>
