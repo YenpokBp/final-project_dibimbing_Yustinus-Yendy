@@ -129,9 +129,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
             <div>
-              <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary-glow">
-                // SYSTEM SELECT // 01
-              </p>
+             
               <h2 className="mt-1 text-3xl font-bold uppercase tracking-widest text-ink sm:text-4xl">
                 Pilih Platform Konsol
               </h2>
@@ -170,9 +168,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
             <div>
-              <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary-glow">
-                // VAULT HIGHLIGHTS // 02
-              </p>
+            
               <h2 className="mt-1 text-3xl font-bold uppercase tracking-widest text-ink sm:text-4xl">
                 Game Fisik Terpopuler
               </h2>
@@ -224,9 +220,7 @@ export default function Home() {
       <section className="border-b border-line px-4 py-16 bg-panel/40">
         <div className="mx-auto max-w-6xl">
           <div className="text-center max-w-2xl mx-auto">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary-glow">
-              // PHYSICAL MATTERS // 03
-            </p>
+          
             <h2 className="mt-1 text-3xl font-bold uppercase tracking-widest text-ink sm:text-4xl">
               Kenapa Memilih Kaset Fisik?
             </h2>
@@ -283,9 +277,6 @@ export default function Home() {
       <section className="border-b border-line px-4 py-16">
         <div className="mx-auto max-w-6xl">
           <div className="text-center max-w-2xl mx-auto">
-            <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary-glow">
-              // PROTOCOL // 04
-            </p>
             <h2 className="mt-1 text-3xl font-bold uppercase tracking-widest text-ink sm:text-4xl">
               Alur Pemesanan Taktis
             </h2>
@@ -296,7 +287,7 @@ export default function Home() {
 
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             <div className="clip-chamfer border border-line bg-panel p-6 relative">
-              <span className="font-mono text-xs text-primary-glow">// TAHAP 01</span>
+              
               <h3 className="mt-2 text-lg font-bold uppercase text-ink">Pilih Game</h3>
               <p className="mt-2 font-mono text-xs text-muted">
                 Jelajahi katalog dan pilih game yang kompatibel dengan platform konsolmu.
@@ -304,7 +295,7 @@ export default function Home() {
             </div>
 
             <div className="clip-chamfer border border-line bg-panel p-6 relative">
-              <span className="font-mono text-xs text-primary-glow">// TAHAP 02</span>
+   
               <h3 className="mt-2 text-lg font-bold uppercase text-ink">Kunci Stok</h3>
               <p className="mt-2 font-mono text-xs text-muted">
                 Tambahkan ke keranjang dan lakukan checkout untuk mengamankan stok tanpa bayar di awal.
@@ -312,7 +303,7 @@ export default function Home() {
             </div>
 
             <div className="clip-chamfer border border-line bg-panel p-6 relative">
-              <span className="font-mono text-xs text-primary-glow">// TAHAP 03</span>
+
               <h3 className="mt-2 text-lg font-bold uppercase text-ink">Datang ke Store</h3>
               <p className="mt-2 font-mono text-xs text-muted">
                 Kunjungi markas toko OMNI dan tunjukkan nomor pesanan (Order ID) ke staf kasir kami.
@@ -320,7 +311,7 @@ export default function Home() {
             </div>
 
             <div className="clip-chamfer border border-line bg-panel p-6 relative">
-              <span className="font-mono text-xs text-primary-glow">// TAHAP 04</span>
+
               <h3 className="mt-2 text-lg font-bold uppercase text-ink">Bayar & Main</h3>
               <p className="mt-2 font-mono text-xs text-muted">
                 Periksa kondisi fisik barang, selesaikan pembayaran tunai/QRIS, dan bawa pulang game-mu!
@@ -336,9 +327,7 @@ export default function Home() {
           <div className="clip-chamfer border border-line bg-linear-to-br from-panel-hi to-panel p-6 sm:p-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
-                <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary-glow">
-                  // STORE HEADQUARTERS // PICKUP POINT
-                </p>
+        
                 <h2 className="mt-1 text-3xl font-bold uppercase tracking-widest text-ink sm:text-4xl">
                   Markas Toko Fisik OMNI
                 </h2>
