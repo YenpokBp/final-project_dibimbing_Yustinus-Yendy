@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `carts` (
-  `cart_id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL AUTO_INCREMENT,
+  `cart_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `user_id` int NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci AUTO_INCREMENT=7;
 
@@ -52,9 +52,9 @@ INSERT INTO `carts` (`cart_id`, `user_id`, `created_at`) VALUES
 --
 
 CREATE TABLE `cart_items` (
-  `cart_item_id` int NOT NULL AUTO_INCREMENT,
+  `cart_item_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `cart_id` int NOT NULL,
-  `product_id` int NOT NULL AUTO_INCREMENT,
+  `product_id` int NOT NULL,
   `quantity` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci AUTO_INCREMENT=29;
 
@@ -73,7 +73,7 @@ INSERT INTO `cart_items` (`cart_item_id`, `cart_id`, `product_id`, `quantity`) V
 --
 
 CREATE TABLE `categories` (
-  `category_id` int NOT NULL AUTO_INCREMENT,
+  `category_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `category_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci AUTO_INCREMENT=10;
 
@@ -99,7 +99,7 @@ INSERT INTO `categories` (`category_id`, `category_name`) VALUES
 --
 
 CREATE TABLE `orders` (
-  `order_id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `user_id` int NOT NULL,
   `order_status` enum('pending','paid','cancelled') NOT NULL DEFAULT 'pending',
   `total_amount` decimal(12,2) NOT NULL,
@@ -136,7 +136,7 @@ INSERT INTO `orders` (`order_id`, `user_id`, `order_status`, `total_amount`, `cr
 --
 
 CREATE TABLE `order_items` (
-  `order_item_id` int NOT NULL AUTO_INCREMENT,
+  `order_item_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `order_id` int NOT NULL,
   `product_id` int NOT NULL,
   `product_name` varchar(150) NOT NULL,
@@ -177,7 +177,7 @@ INSERT INTO `order_items` (`order_item_id`, `order_id`, `product_id`, `product_n
 --
 
 CREATE TABLE `platforms` (
-  `platform_id` int NOT NULL AUTO_INCREMENT,
+  `platform_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `platform_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci AUTO_INCREMENT=4;
 
@@ -197,7 +197,7 @@ INSERT INTO `platforms` (`platform_id`, `platform_name`) VALUES
 --
 
 CREATE TABLE `products` (
-  `product_id` int NOT NULL,
+  `product_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `product_name` varchar(150) NOT NULL,
   `category_id` int NOT NULL,
   `platform_id` int NOT NULL,
@@ -257,7 +257,7 @@ INSERT INTO `products` (`product_id`, `product_name`, `category_id`, `platform_i
 --
 
 CREATE TABLE `users` (
-  `user_id` int NOT NULL,
+  `user_id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
@@ -305,14 +305,12 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `password_hash`, `role`, `creat
 -- Indexes for table `carts`
 --
 ALTER TABLE `carts`
-  ADD PRIMARY KEY (`cart_id`),
   ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `cart_items`
 --
 ALTER TABLE `cart_items`
-  ADD PRIMARY KEY (`cart_item_id`),
   ADD UNIQUE KEY `uc_cart_product` (`cart_id`,`product_id`),
   ADD KEY `product_id` (`product_id`);
 
@@ -320,21 +318,18 @@ ALTER TABLE `cart_items`
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`category_id`),
   ADD UNIQUE KEY `category_name` (`category_name`);
 
 --
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_id`),
   ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `order_items`
 --
 ALTER TABLE `order_items`
-  ADD PRIMARY KEY (`order_item_id`),
   ADD KEY `order_id` (`order_id`),
   ADD KEY `product_id` (`product_id`);
 
@@ -342,14 +337,12 @@ ALTER TABLE `order_items`
 -- Indexes for table `platforms`
 --
 ALTER TABLE `platforms`
-  ADD PRIMARY KEY (`platform_id`),
   ADD UNIQUE KEY `platform_name` (`platform_name`);
 
 --
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`product_id`),
   ADD UNIQUE KEY `uq_product_name_platform` (`product_name`,`platform_id`),
   ADD KEY `category_id` (`category_id`),
   ADD KEY `platform_id` (`platform_id`);
@@ -358,7 +351,6 @@ ALTER TABLE `products`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `email` (`email`);
 
 -- AUTO_INCREMENT is declared in CREATE TABLE for TiDB compatibility.
@@ -400,7 +392,3 @@ ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
   ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`platform_id`) REFERENCES `platforms` (`platform_id`) ON DELETE RESTRICT ON UPDATE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

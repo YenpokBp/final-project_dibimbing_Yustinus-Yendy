@@ -1,0 +1,5 @@
+.env
+backup database/
+certs/
+gamevault_export_tidb.sql
+*_tidb*.sql
