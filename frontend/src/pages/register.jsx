@@ -33,9 +33,6 @@ export default function Register() {
   return (
     <div className="px-4 py-10 sm:py-16 font-display">
       <div className="clip-chamfer mx-auto max-w-md border border-line bg-panel p-6 sm:p-8 shadow-[0_0_30px_rgba(14,165,198,0.15)]">
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary-glow">
-          // Registration
-        </p>
         <h1 className="mt-1 mb-6 text-3xl font-bold uppercase tracking-widest text-ink">
           Daftar
         </h1>

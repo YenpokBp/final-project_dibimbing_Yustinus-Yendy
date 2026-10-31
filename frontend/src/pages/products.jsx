@@ -113,9 +113,6 @@ export default function Products() {
   return (
     <div className="min-h-screen bg-void px-4 py-8 sm:py-10 font-display">
       <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-xs sm:text-sm uppercase tracking-[0.3em] text-primary-glow">
-          // Catalog
-        </p>
         <h1 className="mt-1 sm:mt-2 text-3xl sm:text-4xl font-bold uppercase tracking-widest text-ink">
           Katalog Game
         </h1>

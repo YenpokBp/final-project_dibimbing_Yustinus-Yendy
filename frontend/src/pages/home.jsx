@@ -95,22 +95,22 @@ export default function Home() {
           {/* Quick Metrics Ticker */}
           <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-4 max-w-4xl mx-auto">
             <div className="clip-chamfer-sm border border-line bg-panel/70 p-3 text-left">
-              <span className="font-mono text-xs text-primary-glow">// ECOSYSTEM</span>
+              
               <p className="mt-1 font-mono text-sm sm:text-base font-bold text-ink">3 PLATFORM</p>
               <p className="text-[11px] text-muted">PS5 · Xbox · Switch</p>
             </div>
             <div className="clip-chamfer-sm border border-line bg-panel/70 p-3 text-left">
-              <span className="font-mono text-xs text-primary-glow">// AUTHENTIC</span>
+             
               <p className="mt-1 font-mono text-sm sm:text-base font-bold text-ink">100% ORIGINAL</p>
               <p className="text-[11px] text-muted">Segel Resmi Pabrik</p>
             </div>
             <div className="clip-chamfer-sm border border-line bg-panel/70 p-3 text-left">
-              <span className="font-mono text-xs text-primary-glow">// PAYMENT</span>
+             
               <p className="mt-1 font-mono text-sm sm:text-base font-bold text-ink">BAYAR DI TOKO</p>
               <p className="text-[11px] text-muted">Cek Dulu Baru Bayar</p>
             </div>
             <div className="clip-chamfer-sm border border-line bg-panel/70 p-3 text-left">
-              <span className="font-mono text-xs text-primary-glow">// SECURITY</span>
+              
               <p className="mt-1 font-mono text-sm sm:text-base font-bold text-ink">LOCK STOK</p>
               <p className="text-[11px] text-muted">Booking Tanpa Antre</p>
             </div>
