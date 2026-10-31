@@ -62,20 +62,14 @@ export default function Home() {
         {/* Glow ambient background effects */}
         <div className="pointer-events-none absolute -top-24 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-primary/15 blur-3xl" />
         <div className="pointer-events-none absolute top-1/2 right-0 h-64 w-64 rounded-full bg-primary-deep/20 blur-2xl" />
-
         <div className="relative mx-auto max-w-6xl text-center">
-          <div className="inline-flex items-center gap-2 clip-chamfer-sm border border-primary/40 bg-primary-deep/25 px-3 py-1 font-mono text-xs uppercase tracking-[0.25em] text-primary-glow mb-6">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary-glow animate-pulse" />
-            // OMNI TACTICAL INVENTORY // LIVE VAULT
-          </div>
 
           <h1 className="text-3xl font-bold uppercase tracking-wider text-ink sm:text-5xl md:text-6xl max-w-4xl mx-auto leading-tight">
-            Pusat Arsip & Distribusi <span className="text-primary-glow">Game Fisik</span> Konsol
+            Koleksi <span className="text-violet-glow">Game Fisik</span> Konsol, Tersedia Langsung di Toko
           </h1>
 
-          <p className="mt-5 max-w-2xl mx-auto font-mono text-sm sm:text-base text-muted leading-relaxed">
-            Kurasi kaset, disc, dan cartridge fisik original untuk PlayStation 5, Xbox Series X,
-            dan Nintendo Switch. Amankan pesananmu secara online, lalu bayar dan ambil langsung di markas toko OMNI.
+          <p className="mx-auto mt-4 max-w-xl text-muted">
+            Pilih konsolmu, lihat katalog yang tersedia, lalu pesan online dan ambil di toko.
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">

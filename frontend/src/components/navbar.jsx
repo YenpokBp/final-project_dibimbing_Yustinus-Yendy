@@ -42,12 +42,8 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 border-b border-line bg-void/95 backdrop-blur font-display">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-        <Link
-          to="/"
-          onClick={closeMenu}
-          className="text-2xl font-bold uppercase tracking-[0.35em] text-primary-glow transition hover:opacity-90"
-        >
-          Omni
+        <Link to="/" className="flex items-center" aria-label="OMNI - Beranda">
+          <img src="/omni-logo.svg" alt="OMNI" className="h-9 w-auto" />
         </Link>
 
         {/* Desktop Navigation */}

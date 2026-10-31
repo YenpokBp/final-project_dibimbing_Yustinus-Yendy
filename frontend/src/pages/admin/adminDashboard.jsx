@@ -7,7 +7,6 @@ import {
   EmptyRow,
   btnPrimary,
   inputClass,
-  tableWrap,
   th,
   td,
   downloadCsv,
@@ -137,7 +136,7 @@ export default function AdminDashboard() {
         <StatCard label="Dibatalkan" value={summary?.orders.cancelled ?? "-"} accent="text-danger" />
       </section>
 
-      <div className="mt-8 grid gap-6 lg:grid-cols-2">
+      <div className="mt-8 grid items-start gap-6 lg:grid-cols-2">
         <section>
           <h2 className="text-xl font-bold uppercase tracking-widest text-ink">
             Produk terlaris
@@ -177,10 +176,10 @@ export default function AdminDashboard() {
         </section>
 
         <section>
-          <div className="flex items-center justify-between gap-3">
-            <h2 className="text-xl font-bold uppercase tracking-widest text-ink">Stok rendah</h2>
-            <label className="flex items-center gap-2 font-mono text-xs text-muted">
-              Batas ≤
+          <h2 className="text-xl font-bold uppercase tracking-widest text-ink">Stok rendah</h2>
+          <div className="mt-3 overflow-x-auto border border-line bg-panel">
+            <div className="flex items-center gap-2 border-b border-line px-4 py-2">
+              <span className="font-mono text-xs text-muted">Tampilkan stok ≤</span>
               <input
                 type="number"
                 min="0"
@@ -189,11 +188,9 @@ export default function AdminDashboard() {
                   const v = e.target.value;
                   setThreshold(v === "" ? "" : Math.max(0, Number(v)));
                 }}
-                className={`${inputClass} w-20`}
+                className="w-16 clip-chamfer-sm border border-line bg-panel-hi px-2 py-1 font-mono text-xs text-ink focus:border-primary focus:outline-none"
               />
-            </label>
-          </div>
-          <div className={tableWrap}>
+            </div>
             <table className="w-full">
               <thead className="border-b border-line">
                 <tr>
